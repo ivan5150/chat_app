@@ -30,8 +30,8 @@
         <br/><br/><br/>
         <a href="/"> << Back to home</a>
 
-        <c:forEach items="${list}" var="msg">
-            ${author}<br>
+        <c:forEach items="${list}" var="list">
+            ${msg}<br>
 
         </c:forEach>
 

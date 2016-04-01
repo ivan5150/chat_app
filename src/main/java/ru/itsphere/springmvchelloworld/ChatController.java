@@ -19,6 +19,7 @@ public class ChatController {
     ArrayList<Message> list = new ArrayList<Message>();
     Message msg = new Message("name", "text");
 
+
     @RequestMapping(method = RequestMethod.GET)
     public String dispatchToHomePage() {
         return "Message";
@@ -29,7 +30,8 @@ public class ChatController {
     public String showMessage(@RequestParam String author, @RequestParam String text, ModelMap model) {
         model.addAttribute(AUTHOR_ATTRIBUTE, author);
         model.addAttribute(TEXT_ATTRIBUTE, text);
-        list.add(msg);
+        //list.add(msg);
+        list.add(new Message(author, text));
         return PAGE;
     }
 }
