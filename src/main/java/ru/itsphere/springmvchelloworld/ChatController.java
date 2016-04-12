@@ -1,5 +1,5 @@
 package ru.itsphere.springmvchelloworld;
-//
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,8 +17,6 @@ public class ChatController {
     public static final String PAGE = "Message";
 
     ArrayList<Message> list = new ArrayList<Message>();
-    Message msg = new Message("name", "text");
-
 
     @RequestMapping(method = RequestMethod.GET)
     public String dispatchToHomePage() {
@@ -28,10 +26,8 @@ public class ChatController {
     @RequestMapping(value = "/showMessage", method = RequestMethod.POST)
 
     public String showMessage(@RequestParam String author, @RequestParam String text, ModelMap model) {
-        model.addAttribute(AUTHOR_ATTRIBUTE, author);
-        model.addAttribute(TEXT_ATTRIBUTE, text);
-        //list.add(msg);
         list.add(new Message(author, text));
+        model.addAttribute("messages", list);
         return PAGE;
     }
 }
