@@ -1,11 +1,11 @@
 package ru.itsphere.springmvchelloworld;
 
-public class Message {
+public class MessageForm {
 
     private String authorName;
     private String text;
 
-    public Message(String authorName, String text) {
+    public MessageForm(String authorName, String text) {
         this.authorName = authorName;
         this.text = text;
     }
