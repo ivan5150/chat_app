@@ -20,6 +20,7 @@ public class ChatController {
     public static final String AUTHOR_ATTRIBUTE = "author";
     public static final String TEXT_ATTRIBUTE = "text";
     public static final String PAGE = "Message";
+    public static final String SAVE_FORM = "saveUser";
 
     @Autowired
     private MessageFormValidator messageFormValidator;
@@ -33,7 +34,7 @@ public class ChatController {
 
     @RequestMapping(method = RequestMethod.GET)
     public String dispatchToHomePage() {
-        return "Message";
+        return "saveUser";
     }
 
     @RequestMapping(value = "/showMessage", method = RequestMethod.POST)
@@ -43,21 +44,12 @@ public class ChatController {
         return PAGE;
     }
 
-    @RequestMapping(value = "/showMessage", method = RequestMethod.POST)
+    @RequestMapping(value = "/save/user", method = RequestMethod.POST)
     public String saveUser(@Validated MessageForm messageForm, BindingResult binding, ModelMap model) {
-        return PAGE;
+        if (binding.hasErrors()) {
+            return SAVE_FORM;
+        }
+        return SAVE_FORM;
     }
 
-    /*@RequestMapping(value = "/save/user", method = RequestMethod.POST)
-    public String saveUser(@Validated UserForm userForm, BindingResult binding, ModelMap model) {
-        if (binding.hasErrors()) {
-            return SAVE_USER;
-        }
-        if (userForm.getId().equals("")) {
-            service.insert(new UserDTO(0, userForm.getFirstName(), userForm.getSecondName()));
-        } else {
-            service.update(new UserDTO(Integer.parseInt(userForm.getId()), userForm.getFirstName(), userForm.getSecondName()));
-        }
-        return allUsers(model);
-    }*/
 }
