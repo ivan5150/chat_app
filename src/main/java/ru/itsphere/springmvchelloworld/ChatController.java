@@ -34,17 +34,16 @@ public class ChatController {
 
     @RequestMapping(method = RequestMethod.GET)
     public String dispatchToHomePage() {
-        return "saveUser";
+        return "chatUser";
     }
 
-    @RequestMapping(value = "/showMessage", method = RequestMethod.POST)
-    public String showMessage(@RequestParam String author, @RequestParam String text, ModelMap model) {
-        list.add(new Message(author, text));
+    @RequestMapping(value = "/showMessage", method = RequestMethod.GET)
+    public String showMessage(ModelMap model) {
         model.addAttribute("messages", list);
         return PAGE;
     }
 
-    @RequestMapping(value = "/save/user", method = RequestMethod.POST)
+    @RequestMapping(value = "/save/message", method = RequestMethod.POST)
     public String saveUser(@Validated MessageForm messageForm, BindingResult binding, ModelMap model) {
         if (binding.hasErrors()) {
             return SAVE_FORM;
