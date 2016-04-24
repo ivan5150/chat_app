@@ -9,7 +9,6 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
 
@@ -17,10 +16,9 @@ import java.util.ArrayList;
 @RequestMapping("/")
 public class ChatController {
 
-    public static final String AUTHOR_ATTRIBUTE = "author";
-    public static final String TEXT_ATTRIBUTE = "text";
-    public static final String PAGE = "Message";
-    public static final String SAVE_FORM = "saveUser";
+    public static final String CHAT_PAGE = "chatUser";
+    public static final String MESSAGES_FROM_ATTRIBUTE = "messageForm";
+    public static final String MESSAGES_ATTRIBUTE = "messages";
 
     @Autowired
     private MessageFormValidator messageFormValidator;
@@ -38,17 +36,23 @@ public class ChatController {
     }
 
     @RequestMapping(value = "/showMessage", method = RequestMethod.GET)
-    public String showMessage(ModelMap model) {
-        model.addAttribute("messages", list);
-        return PAGE;
+    public String dispatchChatPage(ModelMap model) {
+        model.addAttribute(MESSAGES_FROM_ATTRIBUTE, new MessageForm());
+        model.addAttribute(MESSAGES_ATTRIBUTE, list);
+        return CHAT_PAGE;
     }
 
     @RequestMapping(value = "/save/message", method = RequestMethod.POST)
-    public String saveUser(@Validated MessageForm messageForm, BindingResult binding, ModelMap model) {
+    public String showMessage(@Validated MessageForm messageForm, BindingResult binding, ModelMap model) {
         if (binding.hasErrors()) {
-            return SAVE_FORM;
+            return CHAT_PAGE;
         }
-        return SAVE_FORM;
+        saveMessage(messageForm);
+        return dispatchChatPage(model);
+    }
+
+    private synchronized void saveMessage(MessageForm messageForm) {
+        list.add(new Message(messageForm.getName(), messageForm.getText()));
     }
 
 }
