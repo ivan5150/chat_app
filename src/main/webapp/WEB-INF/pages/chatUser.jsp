@@ -12,8 +12,8 @@
 </head>
 <body>
 <div class="container">
-    <c:forEach items="${list}" var="msg">
-         ${msg.authorName} : ${msg.text}<br>
+ <c:forEach items="${messages}" var="msg">
+         ${msg.author} : ${msg.text}<br>
      </c:forEach>
      <h1>Save User</h1>
      <form:form method="post" action="/save/message" commandName="messageForm">
@@ -21,9 +21,9 @@
 
         <div class="form-group">
             <label>Author Name</label>
-            <input class="form-control" name="authorName" path="authorName" placeholder="Author"
-        value="${messageForm.authorName}">
-  <form:errors path="authorName" cssStyle="color: #0002ff;"/>
+            <input class="form-control" name="author" path="author" placeholder="Author"
+        value="${messageForm.author}">
+  <form:errors path="author" cssStyle="color: #0002ff;"/>
 </div>
 <div class="form-group">
   <label>Author Text</label>

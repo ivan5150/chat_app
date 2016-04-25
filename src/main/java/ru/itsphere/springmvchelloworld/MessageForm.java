@@ -2,20 +2,20 @@ package ru.itsphere.springmvchelloworld;
 
 public class MessageForm {
 
-    private String authorName;
+    private String author;
     private String text;
 
-    /*public MessageForm(String authorName, String text) {
-        this.authorName = authorName;
+    /*public MessageForm(String author, String text) {
+        this.author = author;
         this.text = text;
     }*/
 
-    public String getName() {
-        return authorName;
+    public String getAuthor() {
+        return author;
     }
 
-    public void setName(String authorName) {
-        this.authorName = authorName;
+    public void setAuthor(String author) {
+        this.author = author;
     }
 
     public String getText() {
@@ -29,7 +29,7 @@ public class MessageForm {
     @Override
     public String toString() {
         return "MessageForm{" +
-                "author='" + authorName + '\'' +
+                "author='" + author + '\'' +
                 ", text=" + text +
                 '}';
     }

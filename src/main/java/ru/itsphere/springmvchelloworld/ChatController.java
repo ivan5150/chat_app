@@ -52,7 +52,7 @@ public class ChatController {
     }
 
     private synchronized void saveMessage(MessageForm messageForm) {
-        list.add(new Message(messageForm.getName(), messageForm.getText()));
+        list.add(new Message(messageForm.getAuthor(), messageForm.getText()));
     }
 
 }

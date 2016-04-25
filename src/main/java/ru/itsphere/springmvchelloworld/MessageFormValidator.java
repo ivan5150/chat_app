@@ -15,10 +15,10 @@ public class MessageFormValidator implements Validator {
 
     @Override
     public void validate(Object o, Errors errors) {
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "authorName", "valid.authorName.empty");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "author", "valid.author.empty");
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "text", "valid.text.empty");
         MessageForm message = (MessageForm) o;
-        if (message.getName().length() < 2 || message.getName().length() > 20) {
+        if (message.getAuthor().length() < 2 || message.getAuthor().length() > 20) {
             errors.rejectValue("authorName", "valid.authorName.length");
         }
         if (message.getText().length() < 2 || message.getText().length() > 20) {

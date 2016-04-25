@@ -2,33 +2,33 @@ package ru.itsphere.springmvchelloworld;
 
 public class Message {
 
-    private String authorName;
+    private String author;
     private String text;
 
-    public Message(String authorName, String text) {
-        this.authorName = authorName;
+    public Message(String author, String text) {
+        this.author = author;
         this.text = text;
     }
 
-    public String getName() {
-        return authorName;
+    public String getAuthorN() {
+        return author;
     }
 
-    public void setName(String authorName) {
-        this.authorName = authorName;
+    public void setAuthorN(String author) {
+        this.author = author;
     }
 
     public String getText() {
         return text;
     }
 
-    public void setText(String authorText) {
-        this.text = authorText;
+    public void setText(String text) {
+        this.text = text;
     }
 
     @Override
     public String toString() {
-        return authorName + ' ' + text;
+        return author + ' ' + text;
     }
 
 }
