@@ -10,11 +10,11 @@ public class Message {
         this.text = text;
     }
 
-    public String getAuthorN() {
+    public String getAuthor() {
         return author;
     }
 
-    public void setAuthorN(String author) {
+    public void setAuthor(String author) {
         this.author = author;
     }
 

@@ -19,7 +19,7 @@ public class MessageFormValidator implements Validator {
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "text", "valid.text.empty");
         MessageForm message = (MessageForm) o;
         if (message.getAuthor().length() < 2 || message.getAuthor().length() > 20) {
-            errors.rejectValue("authorName", "valid.authorName.length");
+            errors.rejectValue("author", "valid.author.length");
         }
         if (message.getText().length() < 2 || message.getText().length() > 20) {
             errors.rejectValue("text", "valid.text.length");

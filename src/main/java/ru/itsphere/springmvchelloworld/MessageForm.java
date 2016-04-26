@@ -5,11 +5,6 @@ public class MessageForm {
     private String author;
     private String text;
 
-    /*public MessageForm(String author, String text) {
-        this.author = author;
-        this.text = text;
-    }*/
-
     public String getAuthor() {
         return author;
     }

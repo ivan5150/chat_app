@@ -19,7 +19,7 @@ public class ChatController {
     public static final String CHAT_PAGE = "chatUser";
     public static final String MESSAGES_FROM_ATTRIBUTE = "messageForm";
     public static final String MESSAGES_ATTRIBUTE = "messages";
-
+    ArrayList<Message> list = new ArrayList<Message>();
     @Autowired
     private MessageFormValidator messageFormValidator;
 
@@ -27,8 +27,6 @@ public class ChatController {
     private void initBinder(WebDataBinder binder) {
         binder.setValidator(messageFormValidator);
     }
-
-    ArrayList<Message> list = new ArrayList<Message>();
 
     @RequestMapping(method = RequestMethod.GET)
     public String dispatchToHomePage() {
