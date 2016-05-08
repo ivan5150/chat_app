@@ -29,24 +29,19 @@ public class ChatController {
     }
 
     @RequestMapping(method = RequestMethod.GET)
-    public String dispatchToHomePage() {
-        return "chatUser";
-    }
-
-    @RequestMapping(value = "/showMessage", method = RequestMethod.GET)
-    public String dispatchChatPage(ModelMap model) {
+    public String showChatPage(ModelMap model) {
         model.addAttribute(MESSAGES_FROM_ATTRIBUTE, new MessageForm());
         model.addAttribute(MESSAGES_ATTRIBUTE, list);
         return CHAT_PAGE;
     }
 
     @RequestMapping(value = "/save/message", method = RequestMethod.POST)
-    public String showMessage(@Validated MessageForm messageForm, BindingResult binding, ModelMap model) {
+    public String saveMessage(@Validated MessageForm messageForm, BindingResult binding, ModelMap model) {
         if (binding.hasErrors()) {
             return CHAT_PAGE;
         }
         saveMessage(messageForm);
-        return dispatchChatPage(model);
+        return showChatPage(model);
     }
 
     private synchronized void saveMessage(MessageForm messageForm) {

@@ -16,20 +16,17 @@
     <c:forEach items="${messages}" var="msg">
         ${msg.author} : ${msg.text}<br>
     </c:forEach>
-    <h1>Save User</h1>
+    <h1>Chat Page</h1>
     <form:form method="post" action="/save/message" commandName="messageForm">
-
 
         <div class="form-group">
             <label>Author Name</label>
-            <input class="form-control" name="author" path="author" placeholder="Author"
-                   value="${messageForm.author}">
+           <form:input class="form-control" path="author" placeholder="Author"/>
             <form:errors path="author" cssStyle="color: #0002ff;"/>
         </div>
         <div class="form-group">
             <label>Author Text</label>
-            <input class="form-control" name="text" path="text" placeholder="Text"
-                   value="${messageForm.text}">
+            <form:input class="form-control" path="text" placeholder="Text"/>
             <form:errors path="text" cssStyle="color: #0002ff;"/>
         </div>
         <input class="btn btn-default btn-xs" type="submit" value="save">
